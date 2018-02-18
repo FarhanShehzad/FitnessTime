@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="604d68c94eb94dbba8c2e2920b10f559" Name="Diagram1">
+        <EntityTypeShape EntityType="FitnessTimeModel.Aerobic" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.AppointmentRequest" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Appointment" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Cardio" Width="1.5" PointX="3" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Expense" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Fee" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Income" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.News" Width="1.5" PointX="3" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Physical" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Tip" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Trainer" Width="1.5" PointX="3" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.User" Width="1.5" PointX="0.75" PointY="14.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.WeightProgress" Width="1.5" PointX="3" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="FitnessTimeModel.Yoga" Width="1.5" PointX="3" PointY="30.625" IsExpanded="true" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Aerobics_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_AppointmentRequests_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Appointments_Cid" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Appointments_Nid" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Cardio_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Income_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_News_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Physical_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Tip_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Trainer_TrainerId" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Trainer_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_WeightProgress_User" ManuallyRouted="false" />
+        <AssociationConnector Association="FitnessTimeModel.FK_Yoga_User" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

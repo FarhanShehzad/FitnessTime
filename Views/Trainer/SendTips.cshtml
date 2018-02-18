@@ -1,0 +1,237 @@
+﻿@model FitnessTime.Models.Tip
+@{
+    List<FitnessTime.Models.News> allTimeNews = (List<FitnessTime.Models.News>)ViewBag.AllNews;
+}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Send Tips - FitnessTime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Bootstrap Core CSS -->
+    <link href="~/Content/AdminPanel/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- Custom CSS -->
+    <link href="~/Content/AdminPanel/style.css" rel='stylesheet' type='text/css' />
+    <!-- font CSS -->
+    <!-- font-awesome icons -->
+    <link href="~/Content/AdminPanel/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js-->
+    <script src="~/Scripts/AdminPanel/jquery-1.11.1.min.js"></script>
+    <script src="~/Scripts/AdminPanel/modernizr.custom.js"></script>
+    <!--webfonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <!--//webfonts-->
+    <!--animate-->
+    <link href="~/Content/AdminPanel/animate.css" rel="stylesheet" type="text/css" media="all">
+    <script src="~/Scripts/AdminPanel/wow.min.js"></script>
+    <script>
+		 new WOW().init();
+    </script>
+    <!--//end-animate-->
+    <!-- chart -->
+    <script src="~/Scripts/AdminPanel/Chart.js"></script>
+    <!-- //chart -->
+    <!--Calender-->
+    <link rel="stylesheet" href="~/Content/AdminPanel/clndr.css" type="text/css" />
+    <script src="~/Scripts/AdminPanel/underscore-min.js" type="text/javascript"></script>
+    <script src="~/Scripts/AdminPanel/moment-2.2.1.js" type="text/javascript"></script>
+    <script src="~/Scripts/AdminPanel/clndr.js" type="text/javascript"></script>
+    <script src="~/Scripts/AdminPanel/site.js" type="text/javascript"></script>
+    <!--End Calender-->
+    <!-- Metis Menu -->
+    <script src="~/Scripts/AdminPanel/metisMenu.min.js"></script>
+    <script src="~/Scripts/AdminPanel/custom.js"></script>
+    <link href="~/Content/AdminPanel/custom.css" rel="stylesheet">
+    <!--//Metis Menu -->
+</head>
+<body class="cbp-spmenu-push">
+    <div class="main-content">
+        <!--left-fixed -navigation-->
+        <div class=" sidebar" role="navigation">
+            <div class="navbar-collapse">
+                <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="~/Trainer/Index"><i class="fa fa-home nav_icon"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="~/Trainer/Notifications"><i class="fa fa-bullhorn nav_icon"></i>Notifcations</a>
+                        </li>
+                        <li>
+                            <a href="~/Trainer/SendTips" class="active"><i class="fa fa-pencil-square-o nav_icon"></i>Send Tips</a>
+                        </li>
+                        <li>
+                            <a href="~/Trainer/ProfileSettings"><i class="fa fa-cogs nav_icon"></i>Profile Settings</a>
+                        </li>
+                    </ul>
+                    <!-- //sidebar-collapse -->
+                </nav>
+            </div>
+        </div>
+        <!--left-fixed -navigation-->
+        <!-- header-starts -->
+        <div class="sticky-header header-section ">
+            <div class="header-left">
+                <!--toggle button start-->
+                <button id="showLeftPush"><i class="fa fa-bars"></i></button>
+                <!--toggle button end-->
+                <!--logo -->
+                <div class="logo">
+                    <a href="~/Trainer/Index">
+                        <h1>FitnessTime</h1>
+                        <span>AdminPanel</span>
+                    </a>
+                </div>
+                <!--//logo-->
+
+                <div class="clearfix"> </div>
+            </div>
+            <div class="header-right">
+                <div class="profile_details_left">
+                    <!--notifications of menu start -->
+                    <ul class="nofitications-dropdown">
+
+                        <li class="dropdown head-dpdn">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-bell"></i><span class="badge blue">@ViewBag.NewsCount</span></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <div class="notification_header">
+                                        <h3>You have @ViewBag.NewsCount new notification</h3>
+                                    </div>
+                                </li>
+
+                                @{
+                                    int i = 0;
+                                    foreach (FitnessTime.Models.News news in allTimeNews)
+                                    {
+                                        <li style="width: 220px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+                                            <a href="~/Trainer/Notifications">
+                                                <div class="user_img"><img src="~/images/Profile/@news.User.Picture" width="34" height="34" alt=""></div>
+                                                <div class="notification_desc" style="width: 140px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+                                                    <p>@news.Subject</p>
+                                                    <p><span>@news.Date.ToShortTimeString() - @news.Date.ToShortDateString()</span></p>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                            </a>
+                                        </li>
+                                        i++;
+                                        if (i == 3)
+                                        {
+                                            break;
+                                        }
+                                    }
+                                }
+
+                                <li>
+                                    <div class="notification_bottom">
+                                        <a href="~/Trainer/Notifications">See all notifications</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"> </div>
+                </div>
+
+
+                <!--notification menu end -->                <div class="profile_details">
+                    <ul>
+                        <li class="dropdown profile_details_drop">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <div class="profile_img">
+                                    <span class="prfil-img"><img src="~/images/Profile/@Session["Picture"]" alt="" width="50" height="50" style="border-radius: 50%"> </span>
+                                    <div class="user-name">
+                                        <p>@Session["Name"]</p>
+                                        <span>@Session["Type"] @Session["Authority"]</span>
+                                    </div>
+                                    <i class="fa fa-angle-down lnr"></i>
+                                    <i class="fa fa-angle-up lnr"></i>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu drp-mnu">
+                                <li> <a href="~/Trainer/ProfileSettings"><i class="fa fa-user"></i> Profile</a> </li>
+                                <li> <a href="~/Trainer/Logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+        <!-- //header-ends -->
+        <!-- main content start-->
+        <div id="page-wrapper">
+            @*<div class="main-page compose">*@
+            <div class="col-lg-12 compose-right widget-shadow" style="width:95%;">
+                <div class="panel-default">
+                    <div class="panel-heading">
+                        Send Tips to Trainees
+                    </div>
+                    <div class="panel-body">
+                        @if (ViewBag.Error == true)
+                        {
+                            <div class="alert alert-info">
+                                @Html.ValidationMessage("Error")
+                            </div>
+                        }
+
+
+                        @using (Html.BeginForm("SendTips", "Trainer", FormMethod.Post, new { @class = "com-mail form-horizontal" }))
+                        {
+                            @Html.TextAreaFor(model => model.Details, new { @class = "form-control1 control2", @placeholder = "Details", @required = "required" })
+                            <input type="submit" value="Send">
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"> </div>
+            @*</div>*@
+        </div>
+
+
+
+
+        <!-- main content end-->
+
+        <!--footer-->
+        <div class="footer">
+            <p>&copy; 2018 <a href="~/Trainer/Index">FitnessTime</a>. All Rights Reserved</p>
+        </div>
+        <!--//footer-->
+    </div>
+    <!-- Classie -->
+    <script src="~/Scripts/AdminPanel/classie.js"></script>
+    <script>
+			var menuLeft = document.getElementById( 'cbp-spmenu-s1' ),
+				showLeftPush = document.getElementById( 'showLeftPush' ),
+				body = document.body;
+
+			showLeftPush.onclick = function() {
+				classie.toggle( this, 'active' );
+				classie.toggle( body, 'cbp-spmenu-push-toright' );
+				classie.toggle( menuLeft, 'cbp-spmenu-open' );
+				disableOther( 'showLeftPush' );
+			};
+
+
+			function disableOther( button ) {
+				if( button !== 'showLeftPush' ) {
+					classie.toggle( showLeftPush, 'disabled' );
+				}
+			}
+    </script>
+    <!--scrolling js-->
+    <script src="~/Scripts/AdminPanel/jquery.nicescroll.js"></script>
+    <script src="~/Scripts/AdminPanel/scripts.js"></script>
+    <!--//scrolling js-->
+    <!-- Bootstrap Core JavaScript -->
+    <script src="~/Scripts/AdminPanel/bootstrap.js"> </script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <title>FitnessTime | Home </title>
+    <link href="~/Content/Home/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Scripts/Home/jquery.min.js"></script>
+    <!---- start-smoth-scrolling---->
+    <script type="text/javascript" src="~/Scripts/Home/move-top.js"></script>
+    <script type="text/javascript" src="~/Scripts/Home/easing.js"></script>
+    <script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+    </script>
+    <!---- start-smoth-scrolling---->
+    <!-- Custom Theme files -->
+    <link href="~/Content/Home/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    </script>
+    <!----webfonts---->
+    <link href='http://fonts.googleapis.com/css?family=Oswald:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Serif' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!----//webfonts---->
+    <!----start-top-nav-script---->
+    <script>
+			$(function() {
+				var pull 		= $('#pull');
+					menu 		= $('nav ul');
+					menuHeight	= menu.height();
+				$(pull).on('click', function(e) {
+					e.preventDefault();
+					menu.slideToggle();
+				});
+				$(window).resize(function(){
+	        		var w = $(window).width();
+	        		if(w > 320 && menu.is(':hidden')) {
+	        			menu.removeAttr('style');
+	        		}
+	    		});
+			});
+    </script>
+    <!----//End-top-nav-script---->
+</head>
+<body>
+    <!-----start-container---->
+    <!----- start-header---->
+    <div id="home" class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="#"><img src="~/images/Home/logo.png" title="logo" /></a>
+            </div>
+            <!----start-top-nav---->
+            <nav class="top-nav">
+                <ul class="top-nav">
+                    <li class="active"><a href="#home" class="scroll">Home</a></li>
+                    <li class="page-scroll"><a href="#features" class="scroll">Features</a></li>
+                    <li class="page-scroll"><a href="#team" class="scroll">OUR TEAM</a></li>
+                    <li class="page-scroll"><a href="#pricing" class="scroll">pricing</a></li>
+                    <li class="page-scroll"><a href="~/Home/SignUp">Join Us</a></li>
+                    <li class="page-scroll"><a href="~/Home/SignIn">Login</a></li>
+
+                </ul>
+                <a href="#" id="pull"><img src="~/images/Home/nav-icon.png" title="menu" /></a>
+            </nav>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <!----- //End-header---->
+    <!----start-slider-script---->
+    <script src="~/Scripts/Home/responsiveslides.min.js"></script>
+    <script>
+			    // You can also use "$(window).load(function() {"
+			    $(function () {
+			      // Slideshow 4
+			      $("#slider4").responsiveSlides({
+			        auto: true,
+			        pager: true,
+			        nav: true,
+			        speed: 500,
+			        namespace: "callbacks",
+			        before: function () {
+			          $('.events').append("<li>before event fired.</li>");
+			        },
+			        after: function () {
+			          $('.events').append("<li>after event fired.</li>");
+			        }
+			      });
+
+			    });
+    </script>
+    <!----//End-slider-script---->
+    <!-- Slideshow 4 -->
+    <div id="top" class="callbacks_container">
+        <ul class="rslides" id="slider4">
+            <li>
+                <img src="~/images/Home/slide1.jpg" alt="">
+                <div class="caption">
+                    <div class="slide-text-info">
+                        <span>We Care About You!</span>
+                        <h1>PERFECT Fitness SOLUTION</h1>
+                        <label>Best Choice for your Health</label>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <img src="~/images/Home/slide2.jpg" alt="">
+                <div class="caption">
+                    <div class="slide-text-info">
+                        <span>Where</span>
+                        <h1>Champions of World</h1>
+                        <label>are Made</label>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="clearfix"> </div>
+    <!----- //End-slider---->
+    <!-----start-fearures---->
+    <div class="features" id="features">
+        <div class="container">
+            <div class="features-head text-center">
+                <h2>Welcome to Fitness<span>Time!</span></h2>
+                <p>Take care of your body. It's the only place you have to live.</p>
+            </div>
+            <div class="feature-grids">
+                <div class="col-md-3 feature-grid">
+                    <h3><span class="fea-icon1"> </span> Aerobics</h3>
+                    <p>Aerobics is a form of physical exercise that combines rhythmic aerobic exercise with stretching and strength training routines with the goal of improving all elements of fitness.</p>
+                </div>
+                <div class="col-md-3 feature-grid">
+                    <h3><span class="fea-icon2"> </span>CARDIO FITNESS</h3>
+                    <p> Your cardio fitness score is determined by your resting heart rate, age, gender, weight, and other personal information. For best results, make sure your weight is correct in your Fitbit profile.</p>
+                </div>
+                <div class="col-md-3 feature-grid">
+                    <h3><span class="fea-icon3"> </span> Physical Fitness</h3>
+                    <p>Physical fitness is a state of health and well-being and, the ability to perform aspects of sports, daily activities. Physical fitness is generally achieved through sufficient rest.</p>
+                </div>
+                <div class="col-md-3 feature-grid">
+                    <h3><span class="fea-icon4"> </span>Yoga</h3>
+                    <p>Yoga is a group of physical, mental, and spiritual practices or disciplines which originated in ancient India. There is a broad variety of yoga in Hinduism, Buddhism, and Jainism.</p>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-----//End-fearures---->
+    <!-----start-team---->
+    <div class="team" id="team">
+        <div class="container">
+            <div class="team-head text-center">
+                <h3>SUPERB TRAINERS</h3>
+                <span> </span>
+            </div>
+            <div class="team-grids">
+                <div class="col-md-3 team-grid">
+                    <a data-toggle="modal" data-target=".bs-example-modal-md" href="#" class="b-link-stripe b-animate-go  thickbox">
+                        <img class="p-img" src="~/images/Home/t1.jpg" /><div class="b-wrapper">
+                            <h2 class="b-animate b-from-left    b-delay03 ">
+                                <div class="animate-head">
+                                    <div class="animate-head-left">
+                                        <h3>What's Special?</h3>
+                                        <span>More than 68 Record Winning, Fit Man.</span>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </a>
+                    <div class="t-member-info">
+                        <h5>Adam Levine</h5>
+                        <span>Administrator</span>
+                    </div>
+                </div>
+                <div class="col-md-3 team-grid">
+                    <a data-toggle="modal" data-target=".bs-example-modal-md" href="#" class="b-link-stripe b-animate-go  thickbox">
+                        <img class="p-img" src="~/images/Home/t2.jpg" /><div class="b-wrapper">
+                            <h2 class="b-animate b-from-left    b-delay03 ">
+                                <div class="animate-head">
+                                    <div class="animate-head-left">
+                                        <h3>What's Special?</h3>
+                                        <span>Award Winning Most Fit Lady 2017</span>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </a>
+                    <div class="t-member-info">
+                        <h5>Sasha Gray</h5>
+                        <span>Physical Fitness Trainer</span>
+                    </div>
+                </div>
+                <div class="col-md-3 team-grid">
+                    <a data-toggle="modal" data-target=".bs-example-modal-md" href="#" class="b-link-stripe b-animate-go  thickbox">
+                        <img class="p-img" src="~/images/Home/t3.jpg" /><div class="b-wrapper">
+                            <h2 class="b-animate b-from-left    b-delay03 ">
+                                <div class="animate-head">
+                                    <div class="animate-head-left">
+                                        <h3>What's Special?</h3>
+                                        <span>Expert in his field serving FitnessTime more than 25 years</span>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </a>
+                    <div class="t-member-info">
+                        <h5>Matt Damon</h5>
+                        <span>Nutritionist</span>
+                    </div>
+                </div>
+                <div class="col-md-3 team-grid">
+                    <a data-toggle="modal" data-target=".bs-example-modal-md" href="#" class="b-link-stripe b-animate-go  thickbox">
+                        <img class="p-img" src="~/images/Home/t4.jpg" /><div class="b-wrapper">
+                            <h2 class="b-animate b-from-left    b-delay03 ">
+                                <div class="animate-head">
+                                    <div class="animate-head-left">
+                                        <h3>What's Special?</h3>
+                                        <span>More than 20 years experienced with highly effective training.</span>
+                                    </div>
+                                    <div class="clearfix"> </div>
+                                </div>
+                            </h2>
+                        </div>
+                    </a>
+                    <div class="t-member-info">
+                        <h5>Dani Daniels</h5>
+                        <span>Aerobics Coach</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-----//End-team---->
+
+    <!-----start-pricing-plans---->
+    <div class="pricing-plans" id="pricing">
+        <div class="container">
+            <div class="pricing-plans-head text-center">
+                <h3>Pricing and plans</h3><span> </span>
+            </div>
+            <div class="pricing-plan-grids">
+                <div class="col-md-4">
+                    <div class="pricing-plan-grid">
+                        <div class="col-md-5 pricing-plan-grid-left text-center">
+                            <span class="p-icon1"> </span>
+                            <h4>Daily</h4>
+                            <p>$1<label>.99</label></p>
+                        </div>
+                        <div class="col-md-7 pricing-plan-grid-right">
+                            <ul class="list-unstyled">
+                                <li><span> </span><a href="#">Pay on Daily Basis</a></li>
+                                <li><span> </span><a href="#">Pay for Serivce you use</a></li>
+                                <li><span> </span><a href="#">No Coach Available</a></li>
+                                <li><span> </span><a href="#">No Trainer Available</a></li>
+                                <li><span> </span><a href="#">No Nutritionist Services</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-plan-middlegrid">
+                        <div class="col-md-5 pricing-plan-grid-left1 text-center">
+                            <span class="p-icon2"> </span>
+                            <h4>Premium</h4>
+                            <p>$149<label>.99</label></p>
+                        </div>
+                        <div class="col-md-7 pricing-plan-grid-right">
+                            <ul class="list-unstyled">
+                                <li><span> </span><a href="#">Become a Premium Member</a></li>
+                                <li><span> </span><a href="#">All Services are Free*</a></li>
+                                <li><span> </span><a href="#">Free Coaches</a></li>
+                                <li><span> </span><a href="#">Nutritionist Services Free</a></li>
+                                <li><span> </span><a href="#">Free Trainers</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="pricing-plan-grid">
+                        <div class="col-md-5 pricing-plan-grid-left text-center">
+                            <span class="p-icon3"> </span>
+                            <h4>Regular</h4>
+                            <p>$9<label>.99</label></p>
+                        </div>
+                        <div class="col-md-7 pricing-plan-grid-right">
+                            <ul class="list-unstyled">
+                                <li><span> </span><a href="#">Be Regular Member</a></li>
+                                <li><span> </span><a href="#">Pay Monthly not Daily</a></li>
+                                <li><span> </span><a href="#">Pay for service you use</a></li>
+                                <li><span> </span><a href="#">Nutritionist Fee Excluded</a></li>
+                                <li><span> </span><a href="#">Trainers Fee Excluded</a></li>
+                            </ul>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+    <!-----//End-pricing-plans---->
+    <!-----//End-container---->
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer-top">
+
+                <div class="col-lg-8">
+                    <div class="container contact">
+                        <div class="col-md-4 contact-top_left">
+                            <h3>contact info</h3>
+                            <ul class="contact_info">
+                                <li><i class="mobile"> </i><span>0900-78601</span></li>
+                                <li><i class="message"> </i><span class="msg">info@fitnesstime.com</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"> <i class="facebook"> </i> </a></li>
+                            <li><a href="#"><i class="twitter"> </i> </a></li>
+                            <li><a href="#"><i class="pinterest"> </i> </a></li>
+                            <li><a href=""><i class="google"> </i> </a></li>
+                            <li><a href="#"><i class="tw"> </i> </a></li>
+                            <li><a href="#"><i class="instagram"> </i> </a></li>
+                            <li><a href="#"><i class="rss"> </i> </a></li>
+                            <div class="clear"> </div>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="clearfix"> </div>
+            </div>
+            <div class="footer-bottom" style="padding-top:10px;" id="contact">
+                <div class="copy" style="padding-bottom:10px; padding-top:5px;" >
+                    <p> 2018, All Rights Reserved. <a href="~/Home/FitnessTime" target="_blank"> FitnessTime</a></p>
+                </div>
+            </div>
+            <script type="text/javascript">
+				$(document).ready(function() {
+					/*
+					var defaults = {
+			  			containerID: 'toTop', // fading element id
+						containerHoverID: 'toTopHover', // fading element hover id
+						scrollSpeed: 1200,
+						easingType: 'linear'
+			 		};
+					*/
+
+					$().UItoTop({ easingType: 'easeOutQuart' });
+
+				});
+            </script>
+            <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;">top </span></a>
+        </div>
+    </div>
+    <!----//End-footer---->
+    <!----//End-container---->
+</body>
+</html>
