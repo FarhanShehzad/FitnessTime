@@ -1,6 +1,7 @@
 ﻿@model FitnessTime.Models.WeightProgress
 @{
     List<FitnessTime.Models.News> allTimeNews = (List<FitnessTime.Models.News>)ViewBag.AllNews;
+    List<FitnessTime.Models.WeightProgress> previousHistory = (List<FitnessTime.Models.WeightProgress>)ViewBag.previousHistory;
 }
 
 
@@ -208,10 +209,52 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <span style="font-size:17px;" class="padding-5">Update Your today's Weight (in KGs): </span>
                         @using (Html.BeginForm("DailyProgress", "Customer", FormMethod.Post, new { @class = "com-mail form-horizontal" }))
                         {
-                            @Html.TextBoxFor(model => model.Weight, new { @class = "form-control1", @placeholder = "e.g 62.8", @type = "number", @required="required"})
+                            @Html.TextBoxFor(model => model.Weight, new { @class = "form-control1", @placeholder = "e.g 62.8", @type = "number", @required="required", @step = "any" })
                             <input type="submit" value="Update Weight">
                         }
                     </div>
+                </div>
+                
+
+
+            </div>
+            <div class="clearfix"> </div>
+
+
+            <div class="tables" style="margin-top:25px;">
+
+                <div class="bs-example widget-shadow" data-example-id="hoverable-table" style="min-height:200px">
+
+                    @if (previousHistory != null)
+                {
+                    <h4 style="margin-bottom:2px;">Your Daily Weight Progress</h4>
+                    <p><i>Please Update Weight Daily for better Results...</i></p>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Day and Date</th>
+                                <th>Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (FitnessTime.Models.WeightProgress weight in previousHistory)
+                            {
+                                <tr>
+                                    <th scope="row">@weight.Date.ToLongDateString()</th>
+                                    <td>@weight.Weight KGs</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <div class="col-lg-12 text-center padding-5">
+                        <h3>You haven't updated your weight till now...</h3>
+                    </div>
+                    <div class="clearfix"></div>
+                }
                 </div>
             </div>
             <div class="clearfix"> </div>

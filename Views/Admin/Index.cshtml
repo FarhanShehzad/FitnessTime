@@ -1,4 +1,11 @@
-﻿<!DOCTYPE HTML>
+﻿
+@{ 
+    List<FitnessTime.Models.ExpenseHistory> expenseHistory = (List<FitnessTime.Models.ExpenseHistory>)ViewBag.ExpenseHistory;
+    List<FitnessTime.Models.Equipment> equip = (List<FitnessTime.Models.Equipment>)ViewBag.Equipment;
+}
+
+
+<!DOCTYPE HTML>
 <html>
 <head>
     <title>Admin Panel - FitnessTime</title>
@@ -55,10 +62,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="~/Admin/Index" class="active"><i class="fa fa-bar-chart nav_icon"></i>Business Analysis</a>
                         </li>
                         <li>
-                            <a href="~/Admin/CustomerRequests"><i class="fa fa-users nav_icon"></i>Customer Requests</a>
-                        </li>
-                        <li class="">
-                            <a href="~/Admin/MembershipRequests"><i class="fa fa-male nav_icon"></i>Membership Requests</a>
+                            <a href="~/Admin/CustomerRequests"><i class="fa fa-users nav_icon"></i>New Requests</a>
                         </li>
                         <li class="">
                             <a href="~/Admin/CreateNews"><i class="fa fa-bullhorn nav_icon"></i>Create News</a>
@@ -69,8 +73,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a href="~/Admin/AddStaff"><i class="fa fa-user nav_icon"></i>Add Staff</a>
                         </li>
+                        <li class="">
+                            <a href="~/Admin/ExploreStaff"><i class="fa fa-male nav_icon"></i>Explore Staff</a>
+                        </li>
                         <li>
-                            <a href="~/Admin/SearchPeople"><i class="fa fa-search-plus nav_icon"></i>Search People</a>
+                            <a href="~/Admin/SearchPeople"><i class="fa fa-search-plus nav_icon"></i>Explore Customers</a>
                         </li>
                         <li>
                             <a href="~/Admin/ProfileSettings"><i class="fa fa-cogs nav_icon"></i>Profile Settings</a>
@@ -104,9 +111,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="header-right">
                 <div class="profile_details_left">
                     <!--notifications of menu start -->
-                    <ul class="nofitications-dropdown">
-
-                    </ul>
+                    <ul class="nofitications-dropdown"></ul>
                     <div class="clearfix"> </div>
                 </div>
                 <!--notification menu end -->
@@ -252,15 +257,189 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     </div>
                     <div class="clearfix"> </div>
                 </div>
-
                 <div class="clearfix"> </div>
-            </div>
-        </div>
-        <!--footer-->
-        <div class="footer">
-            <p>&copy; 2018 <a href="~/Admin/Index">FitnessTime</a>. All Rights Reserved</p>
-        </div>
-        <!--//footer-->
+
+
+
+                <div class="tables" style="margin-top:0px; width:48.5%; float:left;">
+
+                    <div class="bs-example widget-shadow" data-example-id="hoverable-table" style="min-height:310px">
+
+                        @if (expenseHistory != null)
+                            {
+                                <h4 style="margin-bottom:2px;">Your Previous Expense Record...</h4>
+                                <p><i>All Records are being shown Month Wise...</i></p>
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Month</th>
+                                            <th>Total Expenses</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (FitnessTime.Models.ExpenseHistory e in expenseHistory)
+                                        {
+                                            <tr>
+                                                <th scope="row">@e.forMonth.ToString("MMMM"), @e.forMonth.Year</th>
+                                                <td>@e.expense</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            }
+                            else
+                            {
+                                <div class="col-lg-12 text-center padding-5">
+                                    <h3>You don't have any spendings now...</h3>
+                                </div>
+                                <div class="clearfix"></div>
+                            }
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-12 compose-right widget-shadow" style="margin-top:2em; width:48.5%;">
+                    <div class="panel-default">
+                        <div class="panel-heading">
+                            Explore your Equipment
+                            <a href="#" data-toggle="modal" data-target="#myModal">
+                                <input id="sendDue" class="btn btn-danger pull-right" type="button" value="Add New Equipments">
+                            </a>
+                        </div>
+
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+                                <!-- Modal content-->
+                                <div class="col-md-12 validation-grids widget-shadow" style="width:100%;" data-example-id="basic-forms">
+                                    <div class="form-title">
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4>Add a new Equipment</h4>
+                                    </div>
+                                    <div class="form-body">
+                                        <form data-toggle="validator">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" data-minlength="8" id="EName" placeholder="Name of Equipment" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" data-minlength="8" id="EDetails" placeholder="Any Details" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="number" data-minlength="8" class="form-control" id="EAmount" placeholder="Price of the Equipment" required>
+                                                <span id="ErrorMsg" class="help-block" style="color:darkred; font-size:15px;"></span>
+                                            </div>
+                                            <div class="form-group">
+                                                <button id="mybtn" type="submit" class="btn btn-primary" onclick="equipMe(this.id)">Submit</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <script>
+                                function equipMe(id) {
+                                    document.getElementById("mybtn").disabled = true;
+                                    //document.getElementById("ErrorMsg").style.visibility = 'hidden';
+                                    document.getElementById("ErrorMsg").innerHTML = "Working";
+                                    var EName = document.getElementById("EName").value;
+                                    var EDetails = document.getElementById("EDetails").value;
+                                    var EAmount = document.getElementById("EAmount").value;
+                                    $.getJSON("/Admin/EquipMe?a=" + EName + "&b=" + EDetails + "&d=" + EAmount, function (msg) {
+                                        document.getElementById("ErrorMsg").innerHTML = msg;
+                                        document.getElementById("ErrorMsg").style.visibility = 'visible';
+                                        document.getElementById("mybtn").disabled = false;
+                                    });
+                                }
+                            </script>
+                        </div>
+
+
+                        <div class="panel-body">
+                            <div class="tables" style="margin:0px; padding:0px;">
+                                <div class="bs-example widget-shadow" style="margin:0px; padding:0px; min-height:200px" data-example-id="hoverable-table">
+                                    @if (equip != null)
+                                    {
+                                        <div class="col-sm-8 pull-left">
+                                            <h4 class="padding-t-5">All of your Equipments</h4>
+                                            <p style="margin-top:0px;"><i>Keep adding equipments on time for better Record...</i></p>
+                                        </div>
+
+                                        <table id="myTable" class="table table-hover order-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Details</th>
+                                                    <th>Price</th>
+                                                    <th>Purchase Date</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (FitnessTime.Models.Equipment equipment in equip)
+                                                {
+                                                    <tr id="tr+@equipment.Id">
+                                                        <th scope="row">@equipment.Name</th>
+                                                        <td>@equipment.Details</td>
+                                                        <td>@equipment.Price</td>
+                                                        <td>@equipment.PurchaseDate.ToShortDateString()</td>
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-lg-12 text-center padding-5">
+                                            <h3>You  haven't added any equipment now...</h3>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    }
+
+                                    <script>
+                                    function VerifyFee(id) {
+                                        document.getElementById("abc+" + id).style.visibility = 'hidden';
+                                        var amount = document.getElementById("am+" + id).value;
+                                        $.getJSON("/Admin/VerifyFee?id=" + id + "&am=" + amount, function (msg) {
+                                            document.getElementById("abc+" + id).innerHTML = 'Fee Accpeted';
+                                            document.getElementById("abc+" + id).style.visibility = 'visible';
+                                        });
+                                    }
+
+                                    function Block(r) {
+                                        var id = r.id;
+                                        document.getElementById("abc+" + id).style.visibility = 'hidden';
+                                        $.getJSON("/Admin/Block?id=" + id, function (msg) {
+                                            document.getElementById("abc+" + id).innerHTML = 'Blocked';
+                                            document.getElementById("abc+" + id).style.visibility = 'visible';
+                                        });
+                                    }
+
+                                    function Unblock(r) {
+                                        var id = r.id;
+                                        document.getElementById("abc+" + id).style.visibility = 'hidden';
+                                        $.getJSON("/Admin/Unblock?id=" + id, function (msg) {
+                                            document.getElementById("abc+" + id).innerHTML = 'Unblocked';
+                                            document.getElementById("abc+" + id).style.visibility = 'visible';
+                                        });
+                                    }
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+    <div class="clearfix"> </div>
+    </div>
+    </div>
+    <!--footer-->
+    <div class="footer">
+        <p>&copy; 2018 <a href="~/Admin/Index">FitnessTime</a>. All Rights Reserved</p>
+    </div>
+    <!--//footer-->
     </div>
     <!-- Classie -->
     <script src="~/Scripts/AdminPanel/classie.js"></script>

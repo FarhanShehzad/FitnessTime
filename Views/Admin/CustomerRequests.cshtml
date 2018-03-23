@@ -1,4 +1,7 @@
 ﻿@model List<FitnessTime.Models.User>
+    @{ 
+        List<FitnessTime.Models.User> MembershipUsers = (List<FitnessTime.Models.User>)ViewBag.MembershipUsers;
+    }
 
 <!DOCTYPE HTML>
 <html>
@@ -57,10 +60,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                             <a href="~/Admin/Index"><i class="fa fa-bar-chart nav_icon"></i>Business Analysis</a>
                         </li>
                         <li>
-                            <a href="~/Admin/CustomerRequests" class="active"><i class="fa fa-users nav_icon"></i>Customer Requests</a>
-                        </li>
-                        <li class="">
-                            <a href="~/Admin/MembershipRequests"><i class="fa fa-male nav_icon"></i>Membership Requests</a>
+                            <a href="~/Admin/CustomerRequests" class="active"><i class="fa fa-users nav_icon"></i>New Requests</a>
                         </li>
                         <li class="">
                             <a href="~/Admin/CreateNews"><i class="fa fa-bullhorn nav_icon"></i>Create News</a>
@@ -71,8 +71,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a href="~/Admin/AddStaff"><i class="fa fa-user nav_icon"></i>Add Staff</a>
                         </li>
+                        <li class="">
+                            <a href="~/Admin/ExploreStaff"><i class="fa fa-male nav_icon"></i>Explore Staff</a>
+                        </li>
                         <li>
-                            <a href="~/Admin/SearchPeople"><i class="fa fa-search-plus nav_icon"></i>Search People</a>
+                            <a href="~/Admin/SearchPeople"><i class="fa fa-search-plus nav_icon"></i>Explore Customers</a>
                         </li>
                         <li>
                             <a href="~/Admin/ProfileSettings"><i class="fa fa-cogs nav_icon"></i>Profile Settings</a>
@@ -201,6 +204,71 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 document.getElementById("abc+" + id).style.visibility = 'hidden';
                                 $.getJSON("/Admin/Delete?id=" + id, function (msg) {
                                     document.getElementById("tr+" + id).style.visibility = 'hidden';
+                                });
+                            }
+                        </script>
+
+
+                    </div>
+                </div>
+
+                <div class="tables">
+
+                    <div class="bs-example widget-shadow" data-example-id="hoverable-table" style="min-height:400px">
+
+                        @if (MembershipUsers != null)
+                        {
+                            <h4 style="margin-bottom:2px;">New Premium Membership Requests</h4>
+                            <p><i>Collect Membership Dues before approving a Customer...</i></p>
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th class="text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (FitnessTime.Models.User user in MembershipUsers)
+                                    {
+                                        <tr id="tr+@user.Id">
+                                            <th scope="row">@user.Name</th>
+                                            <td>@user.Email</td>
+                                            <td>@user.PhoneNumber</td>
+                                            <td>
+                                                <div id="abc+@user.Id">
+                                                    <button class="center-block col-sm-6 padding-5" id="@user.Id" onclick="MemAccept(this.id)"><i class="fa fa-check text-success text-active"></i></button>
+                                                    <button class="center-block danger col-sm-6 padding-5" id="@user.Id" onclick="Reject(this.id)"><i class="fa fa-times text-danger text"></i></button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <div class="col-lg-12 text-center padding-5">
+                                <h3>You don't have any Requests at this moment...</h3>
+                            </div>
+                            <div class="clearfix"></div>
+                        }
+
+                        <script>
+                            function MemAccept(id) {
+                                document.getElementById("abc+" + id).style.visibility = 'hidden';
+                                $.getJSON("/Admin/MemAccept?id=" + id, function (msg) {
+                                    document.getElementById("abc+" + id).innerHTML = 'Approved';
+                                    document.getElementById("abc+" + id).style.visibility = 'visible';
+                                });
+                            }
+
+                            function Reject(r) {
+                                document.getElementById("abc+" + r).style.visibility = 'hidden';
+                                $.getJSON("/Admin/Reject?id=" + r, function (msg) {
+                                    document.getElementById("tr+" + r).style.visibility = 'hidden';
                                 });
                             }
                         </script>

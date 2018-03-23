@@ -3,7 +3,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <title>Search People - FitnessTime</title>
+    <title>Explore Customers - FitnessTime</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="keywords" content="Novus Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -54,13 +54,10 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                 <nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-left" id="cbp-spmenu-s1">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="~/Admin/Index"><i class="fa fa-bar-chart nav_icon"></i>Business Analysis</a>
+                            <a href="~/Admin/Index" ><i class="fa fa-bar-chart nav_icon"></i>Business Analysis</a>
                         </li>
                         <li>
-                            <a href="~/Admin/CustomerRequests"><i class="fa fa-users nav_icon"></i>Customer Requests</a>
-                        </li>
-                        <li class="">
-                            <a href="~/Admin/MembershipRequests"><i class="fa fa-male nav_icon"></i>Membership Requests</a>
+                            <a href="~/Admin/CustomerRequests"><i class="fa fa-users nav_icon"></i>New Requests</a>
                         </li>
                         <li class="">
                             <a href="~/Admin/CreateNews"><i class="fa fa-bullhorn nav_icon"></i>Create News</a>
@@ -71,8 +68,11 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                         <li>
                             <a href="~/Admin/AddStaff"><i class="fa fa-user nav_icon"></i>Add Staff</a>
                         </li>
+                        <li class="">
+                            <a href="~/Admin/ExploreStaff"><i class="fa fa-male nav_icon"></i>Explore Staff</a>
+                        </li>
                         <li>
-                            <a href="~/Admin/SearchPeople"  class="active"><i class="fa fa-search-plus nav_icon"></i>Search People</a>
+                            <a href="~/Admin/SearchPeople" class="active"><i class="fa fa-search-plus nav_icon"></i>Explore Customers</a>
                         </li>
                         <li>
                             <a href="~/Admin/ProfileSettings"><i class="fa fa-cogs nav_icon"></i>Profile Settings</a>
@@ -145,7 +145,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
             <div class="col-lg-12 compose-right widget-shadow" style="width:95%;">
                 <div class="panel-default">
                     <div class="panel-heading">
-                        Explore your Community
+                        Explore your Costomers
                         <a href="#" data-toggle="modal" data-target="#myModal">
                             <input id="sendDue" class="btn btn-danger pull-right" type="button" onclick="SendDues(this.id)" value="Send Dues Notification">
                         </a>
@@ -186,7 +186,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 @if (Model != null)
                                 {
                                     <div class="col-sm-8 pull-left">
-                                        <h4 class="padding-t-5">All of your Community</h4>
+                                        <h4 class="padding-t-5">All of your Costomers</h4>
                                         <p style="margin-top:0px;"><i>Accept dues from your customers or block/unblock accounts...</i></p>
                                     </div>
                                         <div class="col-sm-4 pull-right margin-top">
@@ -248,6 +248,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                 <th>Amount</th>
                                                 <th>Authority</th>
                                                 <th>Type</th>
+                                                <th>Date of Joining</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
@@ -273,6 +274,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                                         }
                                                     <td>@user.Authority</td>
                                                     <td>@user.Type</td>
+                                                    <td>@user.DateOfJoining.ToShortDateString()</td>
                                                     <td>
                                                         @if (@user.Authority == "Admin") { }
                                                         else if (@user.Status == "Block")
@@ -314,7 +316,7 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                                 else
                                 {
                                     <div class="col-lg-12 text-center padding-5">
-                                        <h3>You don't have any Community right now...</h3>
+                                        <h3>You don't have any Costomers right now...</h3>
                                     </div>
                                     <div class="clearfix"></div>
                                 }
