@@ -1,6 +1,7 @@
 ﻿
 @{ 
     List<FitnessTime.Models.ExpenseHistory> expenseHistory = (List<FitnessTime.Models.ExpenseHistory>)ViewBag.ExpenseHistory;
+    List<FitnessTime.Models.IncomeHistory> incomeHistory = (List<FitnessTime.Models.IncomeHistory>)ViewBag.IncomeHistory;
     List<FitnessTime.Models.Equipment> equip = (List<FitnessTime.Models.Equipment>)ViewBag.Equipment;
 }
 
@@ -266,24 +267,29 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
                     <div class="bs-example widget-shadow" data-example-id="hoverable-table" style="min-height:310px">
 
                         @if (expenseHistory != null)
-                            {
+                        {
                                 <h4 style="margin-bottom:2px;">Your Previous Expense Record...</h4>
                                 <p><i>All Records are being shown Month Wise...</i></p>
                                 <table class="table table-hover">
                                     <thead>
                                         <tr>
                                             <th>Month</th>
+                                            <th>Total Income</th>
                                             <th>Total Expenses</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach (FitnessTime.Models.ExpenseHistory e in expenseHistory)
-                                        {
+                                       @{
+                                           for (int i = 0; i < expenseHistory.Count; i++)
+                                           {
                                             <tr>
-                                                <th scope="row">@e.forMonth.ToString("MMMM"), @e.forMonth.Year</th>
-                                                <td>@e.expense</td>
+                                                <th scope="row">@expenseHistory[i].forMonth.ToString("MMMM"), @expenseHistory[i].forMonth.Year</th>
+                                                <td>@incomeHistory[i].income</td>
+                                                <td>@expenseHistory[i].expense</td>
                                             </tr>
-                                        }
+                                           }
+                                    }
+
 
                                     </tbody>
                                 </table>
