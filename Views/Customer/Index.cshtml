@@ -123,24 +123,29 @@ SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony
 
                                 @{
                                     int i = 0;
-                                    foreach (FitnessTime.Models.News news in allTimeNews)
+
+                                    if (allTimeNews != null)
                                     {
-                                        <li style="width: 220px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
-                                            <a href="~/Customer/Notifications">
-                                                <div class="user_img"><img src="~/images/Profile/@news.User.Picture" width="34" height="34" alt=""></div>
-                                                <div class="notification_desc" style="width: 140px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
-                                                    <p>@news.Subject</p>
-                                                    <p><span>@news.Date.ToShortTimeString() - @news.Date.ToShortDateString()</span></p>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                            </a>
-                                        </li>
-                                        i++;
-                                        if(i == 3)
+                                        foreach (FitnessTime.Models.News news in allTimeNews)
                                         {
-                                            break;
+                                            <li style="width: 220px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+                                                <a href="~/Customer/Notifications">
+                                                    <div class="user_img"><img src="~/images/Profile/@news.User.Picture" width="34" height="34" alt=""></div>
+                                                    <div class="notification_desc" style="width: 140px; overflow: hidden; white-space: nowrap;  text-overflow: ellipsis;">
+                                                        <p>@news.Subject</p>
+                                                        <p><span>@news.Date.ToShortTimeString() - @news.Date.ToShortDateString()</span></p>
+                                                    </div>
+                                                    <div class="clearfix"></div>
+                                                </a>
+                                            </li>
+                                            i++;
+                                            if (i == 3)
+                                            {
+                                                break;
+                                            }
                                         }
                                     }
+
                                 }
 
                                 <li>
